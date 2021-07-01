@@ -16,6 +16,10 @@ El objetivo a la entrega del proyecto no es la de tener un sitio 100% funcional 
 
 
 ## Instrucciones de instalación:
-- Ejecutar las migraciones globales.
+- Ejecutar composer install
+- Copiar contenido de .env.example en .env y configurar la BD
+- Ejedutar php artisan key:generate
+- Ejecutar php artisan migrate
+- Ejecutar php artisan serve
 - Ejecutar php artisan db:seed --class=PruebaProvedoresSeeder
 - Ejecutar php artisan db:seed --class=ProductosSeeder 
