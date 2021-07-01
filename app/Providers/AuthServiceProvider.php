@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Team;
+use App\Models\Producto;
+use App\Models\User;
 use App\Policies\TeamPolicy;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -26,6 +29,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('administrar-productos', function (User $user) {
+            return $user->is_admin == True;
+        });
     }
 }

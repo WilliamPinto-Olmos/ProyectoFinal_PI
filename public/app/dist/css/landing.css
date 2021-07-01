@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Courgette&family=Fredoka+One&display=swap');
+
+.landing-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    margin: 20px;
+    background: rgb(2,0,36);
+    /* background: linear-gradient(20deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 43%, rgba(69,123,157,1) 100%); 
+    background: rgb(255,255,255); */
+    background: linear-gradient(20deg, rgba(255, 255, 255, 0.2) 0%, rgba(0,212,255,0.2) 54%, rgba(69,123,157, 0.2) 100%);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,212,255,0.2);
+    /* background: #fff; */
+
+}
+
+.landing-header  {
+    font-family: 'Courgette', cursive;
+    /* font-family: 'Fredoka One', cursive; */
+    /* font-family: 'Alfa Slab One', cursive; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+} 
+
+.landing-header h1{
+    font-size: 100px;
+    margin-top: -200px;
+}
+
+.landing-header img{
+    width: auto;
+    max-height: 420px;
+}
+
+.circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    border-radius: 50%;
+    background-color:rgba(201, 201, 77, 0.877);
+    width: 380px;
+    height: 380px;
+
+}
