@@ -20,6 +20,7 @@ El objetivo a la entrega del proyecto no es la de tener un sitio 100% funcional 
 - Copiar contenido de .env.example en .env y configurar la BD
 - Ejedutar php artisan key:generate
 - Crear manualmente la base de datos "proyectofinal" o modificar la base de datos en .env
+- Crear ambiente de correo en .env
 - Ejecutar php artisan migrate
 - Ejecutar php artisan serve
 - Ejecutar php artisan db:seed --class=PruebaProvedoresSeeder
