@@ -66,7 +66,12 @@ Route::resource('provedor', ProvedorController::class)->middleware('auth');
 Route::get('{user}/shopcart', function () {
     $user = Auth::user();
     $productos = $user->productos()->with('users')->get(); //eager loader
+    $bill_checkout = 0;
 
-    return view('app.shopcart', compact('user', 'productos'));
+    foreach ($productos as $producto) {
+         $bill_checkout += $producto->precio * $producto->pivot->cantidadProducto;
+    }
+
+    return view('app.shopcart', compact('user', 'productos', 'bill_checkout'));
     
 })->name('shopcart')->middleware('verified');
