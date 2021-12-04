@@ -81,3 +81,9 @@ Route::get('/{user}/shopcart/payment', function () {
 
     return view ('app.paymentView', compact('user'));
 })->name('payment')->middleware('verified');
+
+Route::delete('/eliminarProductos', function () {
+   $user = Auth::user(); 
+
+   $user->productos()->sync([]);
+});

@@ -126,6 +126,19 @@
             text: 'Pago realizado con éxito',
             icon: 'success',
             confirmButtonText: 'Aceptar'
+        }).then(function () {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "/eliminarProductos/",
+                type: "DELETE",
+                data: {
+                    
+                },
+                dataType: "JSON",
+            });
+            window.location.href = "/";
         });
     });
 </script>
