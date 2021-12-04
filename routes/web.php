@@ -75,3 +75,9 @@ Route::get('{user}/shopcart', function () {
     return view('app.shopcart', compact('user', 'productos', 'bill_checkout'));
     
 })->name('shopcart')->middleware('verified');
+
+Route::get('/{user}/shopcart/payment', function () {
+    $user = Auth::user();
+
+    return view ('app.paymentView', compact('user'));
+})->name('payment')->middleware('verified');

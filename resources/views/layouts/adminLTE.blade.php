@@ -15,6 +15,8 @@
   <!-- CSS Product Cards Desing -->
   <link rel="stylesheet" href="{{  asset ('app/dist/css/productCard.css')  }}">
   <link rel="stylesheet" href="{{  asset ('app/dist/css/landing.css')  }}">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="{{ asset('app/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -99,12 +101,12 @@
     @yield('contenido')
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
+  {{-- <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.1.0
     </div>
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
+  </footer> --}}
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -122,5 +124,7 @@
 <script src="{{ asset('app/dist/js/adminlte.min.js')  }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('app/dist/js/demo.js')  }}"></script>
+{{-- SweetAlert2 --}}
+<script src={{ asset("app/plugins/sweetalert2/sweetalert2.min.js")}}></script>
 </body>
 </html>

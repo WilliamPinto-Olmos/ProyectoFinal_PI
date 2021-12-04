@@ -5,14 +5,15 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
+    
     <div class="landing-container">
         <div class="landing-header">
-          <h1 style="font-size: 8vw;">Bienvenidos a</h1>
-          <div class="circle" style="">
+          <h1 class="mt-4" style="font-size: 5rem; ">Bienvenidos a</h1>
+          <div class="circle d-flex justify-content-center align-items-center">
             <img src="{{ asset('app/dist/img/Brandlogo.png') }}" alt="" class="img-fluid">
           </div>
         </div>
-      </div>
+    </div>
 
     <section class="content-header">
       <div class="container-fluid">
@@ -31,9 +32,9 @@
       <div class="card">
         
         <!-- CONTENIDO -->
-        <div class="card-body" style="">
+        <div class="card-body row">
           @foreach ($productos as $producto)
-            <div class="products-container">
+            <div class="products-container col-md-4">
               <div class="product-card">
                 <form action="{{ route('producto.addToUser', $producto) }}" method="POST">
                   @csrf

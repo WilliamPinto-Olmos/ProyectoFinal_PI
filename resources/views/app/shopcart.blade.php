@@ -33,7 +33,7 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($productos as $producto)
+                @forelse ($productos as $producto)
                   <tr>
                     <td>{{ $producto->nombre }}</td> 
                     <td>{{ $producto->descripcion }}</td>
@@ -47,7 +47,14 @@
                       </form>
                     </td>
                   </tr>
-                @endforeach
+                @empty
+                  <tr class="">
+                      {{-- <td colspan=7 class="text-center"> --}}
+                      <td colspan=6 class="text-center ">
+                          No hay productos en su carrito
+                      </td>
+                  </tr>
+                @endforelse
               </tbody>
             </table>
           
@@ -56,9 +63,11 @@
               <h5 style="font-size: 30px" class="text-muted ">${{ $bill_checkout }}</h5>  
             </div>
             <div id="checkout-btn" class="d-flex justify-content-end">
-              <button id="proced-to-checkout" class="btn btn-dark">
-                Proceder al pago
-              </button>
+              <a class="text-white" href="{{ route('payment', $user) }}">
+                <button id="proced-to-checkout" class="btn btn-dark" {{ $bill_checkout == 0 ? 'disabled' : '' }}>
+                  Proceder al pago
+                </button>
+              </a> 
             </div>
         </div>
         <!-- /.card-body -->
