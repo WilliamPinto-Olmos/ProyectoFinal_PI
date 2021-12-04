@@ -39,10 +39,10 @@
                 <form action="{{ route('producto.addToUser', $producto) }}" method="POST">
                   @csrf
                   <a href="{{ route('producto.showSingle', $producto->id) }}">
-                    <img src="{{ $producto->img }}" alt="product image" class="product-img-card">
+                    <img src="{{ $producto->img }}" alt="product image" class="product-img-card img-fluid">
                     <h1>{{ $producto->nombre }}</h1>
                   </a>
-                  <p class="price">${{ $producto->precio }}.00</p>
+                  <p class="price">${{ $producto->precio }}</p>
                   <p class="product-description">{{ $producto->descripcion }}</p>
                   <input type="hidden" name="producto_id" id="producto_id" value="{{ $producto->id }}">
                   <p class="add-to-cart"><button type="submit">Añadir al carrito</button></p>

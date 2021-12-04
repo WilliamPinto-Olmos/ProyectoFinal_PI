@@ -3,79 +3,174 @@
 @section('contenido')
 
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Carrito de compras</h1>
+
+<!--Section: Block Content-->
+<section class="p-2">
+
+  <!--Grid row-->
+  <div class="row">
+
+    <!--Grid column-->
+    <div class="col-lg-8">
+
+      <!-- Card -->
+      <div class="card wish-list mb-3">
+        <div class="card-body">
+
+          <h5 class="mb-4">Carrito (<span>{{count($productos)}}</span> productos)</h5>
+
+          @foreach ($productos as $producto )
+            <div class="row mb-4">
+              <div class="col-md-5 col-lg-3 col-xl-3">
+                <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                  <a href="#!">
+                    <div class="text-center mask waves-effect waves-light">
+                      <img class="img-fluid" style="max-height: 150px; width: auto;"
+                        src="{{ $producto->img }}">
+                      <div class="mask rgba-black-slight waves-effect waves-light"></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-7 col-lg-9 col-xl-9">
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <h5>{{ $producto->nombre }} x {{ $producto->pivot->cantidadProducto }}</h5>
+                      <p class="mb-3 text-muted text-uppercase small">{{ $producto->descripcion }}</p>
+                      <p class="mb-2 text-muted text-uppercase small">{{ $producto->precio }}</p>
+                    </div>
+                    <div>
+                      
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <form action="{{ route('producto.deleteFromUser', $producto) }}" method="POST">
+                        @csrf 
+                        <button type="submit" class="btn btn-danger card-link-secondary small text-uppercase mr-3" value="Eliminar producto" style="font-size: 10px;">
+                          <i class="fas fa-trash-alt mr-1"></i> Eliminar producto  
+                        </button>
+                      </form>
+                      <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
+                          class="fas fa-heart mr-1"></i> Mover a la lista de deseos </a>
+                    </div>
+                    <p class="mb-0"><span><strong>${{ $producto->precio * $producto->pivot->cantidadProducto }}</strong></span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+          @endforeach
+
+
+          <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> No pierdas mucho tiempo... Añadir productos al carrito no significa que sean apartados</p>
+
+        </div>
+      </div>
+      <!-- Card -->
+
+      <!-- Card -->
+      <div class="card mb-3">
+        <div class="card-body">
+
+          <h5 class="mb-4">Fecha estimada de entrega</h5>
+
+          <p class="mb-0"> Lunes 07 Diciembre 2021</p>
+        </div>
+      </div>
+      <!-- Card -->
+
+      <!-- Card -->
+      <div class="card mb-3">
+        <div class="card-body">
+
+          <h5 class="mb-4">Aceptamos</h5>
+
+          <img class="mr-2" width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+            alt="Visa">
+          <img class="mr-2" width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+            alt="American Express">
+          <img class="mr-2" width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+            alt="Mastercard">
+        </div>
+      </div>
+      <!-- Card -->
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-lg-4">
+
+      <!-- Card -->
+      <div class="card mb-3">
+        <div class="card-body">
+
+          <h5 class="mb-3">Resumen de costos</h5>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+              Costo
+              <span>${{ $bill_checkout }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+              Envio
+              <span>Gratis</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+              <div>
+                <strong>Costo final</strong>
+                <strong>
+                  <p class="mb-0">(Incluye IVA)</p>
+                </strong>
+              </div>
+              <span><strong>${{ $bill_checkout }}</strong></span>
+            </li>
+          </ul>
+
+          <a class="text-white" href="{{ route('payment', $user) }}">
+            <button type="button" class="btn btn-primary btn-block waves-effect waves-light" {{ $bill_checkout == 0 ? 'disabled' : '' }}>Proceder al pago</button>
+          </a>
+
+        </div>
+      </div>
+      <!-- Card -->
+
+      <!-- Card -->
+      <div class="card mb-3">
+        <div class="card-body">
+
+          <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse" href="#collapseExample1"
+            aria-expanded="false" aria-controls="collapseExample1">
+            Añadir código de descuento (opcional)
+            <span><i class="fas fa-chevron-down pt-1"></i></span>
+          </a>
+
+          <div class="collapse" id="collapseExample1">
+            <div class="mt-3">
+              <div class="md-form md-outline mb-0">
+                <input type="text" id="discount-code1" class="form-control font-weight-light"
+                  placeholder="Enter discount code">
+              </div>
+            </div>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Default box -->
-      <div class="card">
-        <!-- CONTENIDO -->
-        <div class="card-body">
-            <table class="table align-middle table-bordered table-hover">
-              <thead class="thead-dark">
-                <tr>
-                  <th>Nombre</th>
-                  <th>Descripción</th>
-                  <th>Precio</th>
-                  <th>Cantidad</th>
-                  <th>Imagen</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                @forelse ($productos as $producto)
-                  <tr>
-                    <td>{{ $producto->nombre }}</td> 
-                    <td>{{ $producto->descripcion }}</td>
-                    <td>{{ $producto->precio }}</td>
-                    <td>{{ $producto->pivot->cantidadProducto }}</td>
-                    <td><img height="100px" width="auto" src="{{ $producto->img }}" alt="productImg"></td>
-                    <td>
-                      <form action="{{ route('producto.deleteFromUser', $producto) }}" method="POST">
-                        @csrf
-                        <input type="submit" class="btn btn-danger" value="Eliminar producto">
-                      </form>
-                    </td>
-                  </tr>
-                @empty
-                  <tr class="">
-                      {{-- <td colspan=7 class="text-center"> --}}
-                      <td colspan=6 class="text-center ">
-                          No hay productos en su carrito
-                      </td>
-                  </tr>
-                @endforelse
-              </tbody>
-            </table>
-          
-            <div id="total-checkout" class="mt-5 d-flex justify-content-end align-items-center" style="text-align: center">
-              <h3 class="d-flex align-items-center" >Total de compra: </h3>
-              <h5 style="font-size: 30px" class="text-muted ">${{ $bill_checkout }}</h5>  
-            </div>
-            <div id="checkout-btn" class="d-flex justify-content-end">
-              <a class="text-white" href="{{ route('payment', $user) }}">
-                <button id="proced-to-checkout" class="btn btn-dark" {{ $bill_checkout == 0 ? 'disabled' : '' }}>
-                  Proceder al pago
-                </button>
-              </a> 
-            </div>
-        </div>
-        <!-- /.card-body -->
       </div>
-      <!-- /.card -->
+      <!-- Card -->
 
-    </section>
-    <!-- /.content -->
+    </div>
+    <!--Grid column-->
+
   </div>
+  <!--Grid row-->
+
+</section>
+<!--Section: Block Content-->
+
+</div>
 
 @endsection
